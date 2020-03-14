@@ -1,4 +1,6 @@
-const mymap = L.map('mapid').setView([0, 0], 2.5);
+const mymap = L.map('mapid',{
+    worldCopyJump:true
+}).setView([0, 0], 2.5);
 L.tileLayer(
     'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiZGVmYXVsdHEiLCJhIjoiY2s3cDg2ZGJuMDdsNjNmcnJwcTR5YWtvbSJ9.xi1nhoP6EGWiL4BoUwoHgg', {
         attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -9,7 +11,7 @@ L.tileLayer(
         accessToken: 'your.mapbox.access.token'
     }).addTo(mymap);
 
-    const circle = L.circle([0,0], {
+    const circle = L.circle([41.1231, 20.8016], {
         color: 'red',
         fillColor: '#f03',
         fillOpacity: 0.5,
