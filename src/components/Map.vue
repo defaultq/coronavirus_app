@@ -50,15 +50,16 @@
       };
     },
     mounted() {
+      // this.fetchData('https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/03-15-2020.csv',this.setData);
       this.fetchData('https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/03-15-2020.csv',this.setData);
     },
     methods: {
       fetchData(url,callback) {
         this.$papa.parse(
           url, {
-            header: true,
-            download: true,
+           header: false,
             dynamicTyping: true,
+            download: true,
             complete: function (results) {
 
               callback(results.data);
@@ -74,13 +75,13 @@
       setData(data) {
 
         this.data = data;
+         this.data.splice(0,1);
          this.data.forEach(element => {
 
-            element.latLng = latLng(element.Latitude , element.Longitude);
+            element.latLng = latLng(element[6] , element[7]);
 
         });
         console.log(this.data);
-
       },
       
       renderMap(state){
