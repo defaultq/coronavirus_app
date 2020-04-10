@@ -1,6 +1,6 @@
 <template>
   <ul style="height: 1000px; width: 100%">
-    <l-map v-if="showMap" :zoom="zoom" :center="center" :options="mapOptions" style="height: 80%"
+    <l-map v-if="showMap" :zoom="zoom" :center="center" :options="mapOptions" :max-bounds="maxBounds" :bounds="bounds" style="height: 500px; width:100%"
       @update:center="centerUpdate" @update:zoom="zoomUpdate">
       <l-tile-layer :url="url" :attribution="attribution" />
       <!-- <l-circle :lat-lng="withTooltip" :radius="100000" /> -->
@@ -16,7 +16,8 @@
 
 <script>
   import {
-    latLng
+    latLng,
+    latLngBounds
   } from "leaflet";
   import {
     LMap,
@@ -37,10 +38,19 @@
         center: latLng(0, -1.219482),
         url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
         attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
+          bounds: latLngBounds([
+        [40.70081290280357, -74.26963806152345],
+        [40.82991732677597, -74.08716201782228]
+      ]),
+         maxBounds: latLngBounds([
+        [186.4765625, 85.8095114039649],
+        [-169.1015625, -67.06743335108297]
+      ]),
         withPopup: latLng(47.41322, -1.219482),
         withTooltip: latLng(47.41422, -1.250482),
         currentZoom: 11.5,
         currentCenter: latLng(47.41322, -1.219482),
+         
         showParagraph: false,
         mapOptions: {
           zoomSnap: 0.5
