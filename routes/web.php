@@ -27,3 +27,8 @@ Route::get('API', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/globally_latest', 'Covid\CovidController@global_latest');
+Route::get('/{country}/latest', 'Covid\CovidController@country_latest');
+Route::get('/{country}/{date}', 'Covid\CovidController@by_country_date');
+Route::get('/{country}/all', 'Covid\CovidController@country_all');
