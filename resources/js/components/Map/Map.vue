@@ -9,14 +9,7 @@
       @update:center="centerUpdated"
       @update:bounds="boundsUpdated"
     >
-      <!-- <l-control>
-        <div>
-          <button id="graph" @click.prevent="show">Graphical Representation</button>
-          <modal name="Graphical">Graphical</modal>
-        </div>
-      </l-control>-->
-
-      <!-- <l-control position="upper">
+       <l-control position="upper">
         <div class="sidebar">
           <button class="btn total">Total cases</button>
           <button class="btn activec">Active cases</button>
@@ -24,12 +17,8 @@
           <button class="btn deaths">Deaths</button>
           <input type="text" class="search" placeholder="Search" />
         </div>
-      </l-control> -->
+  
       <l-tile-layer :url="url" :attribution="attribution" />
-
-      <!-- <l-marker :lat-lng="markerLatLng">
-        <l-popup></l-popup>
-      </l-marker> -->
     </l-map>
   </div>
 </template>
@@ -37,15 +26,15 @@
 <script>
 import axios from "axios";
 import { latLngBounds } from "leaflet";
-import { LMap, LTileLayer, LPopup, LControl, LMarker } from "vue2-leaflet";
+import { LMap, LTileLayer, LPopup, LControl } from "vue2-leaflet";
 
 export default {
   components: {
     LMap,
     LTileLayer,
     LPopup,
-    LControl,
-    LMarker
+    LControl
+  
   },
   data() {
     return {
@@ -64,14 +53,11 @@ attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contri
 
       markerLatLng: [47.31322, -1.319482],
       koroni: [],
-      mode: "dark"
+    
     };
   },
   methods: {
     // getKoroni() {
-    //   fetch("https://pomber.github.io/covid19/timeseries.json")
-    //     .then(responce => responce.json())
-    //     .then(data => (this.koroni = data));
     //   axios
     //     .get("https://pomber.github.io/covid19/timeseries.json")
     //     .then(response => (this.koroni = response.data));
@@ -98,7 +84,7 @@ attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contri
 
 <style scoped>
 .sidebar {
-  position: fixed;
+  position: relative;
   width: 300px;
   top: 0;
   right: 0;
