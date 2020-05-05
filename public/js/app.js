@@ -1964,17 +1964,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -1983,8 +1972,7 @@ __webpack_require__.r(__webpack_exports__);
     LMap: vue2_leaflet__WEBPACK_IMPORTED_MODULE_2__["LMap"],
     LTileLayer: vue2_leaflet__WEBPACK_IMPORTED_MODULE_2__["LTileLayer"],
     LPopup: vue2_leaflet__WEBPACK_IMPORTED_MODULE_2__["LPopup"],
-    LControl: vue2_leaflet__WEBPACK_IMPORTED_MODULE_2__["LControl"],
-    LMarker: vue2_leaflet__WEBPACK_IMPORTED_MODULE_2__["LMarker"]
+    LControl: vue2_leaflet__WEBPACK_IMPORTED_MODULE_2__["LControl"]
   },
   data: function data() {
     return {
@@ -1995,15 +1983,11 @@ __webpack_require__.r(__webpack_exports__);
       bounds: Object(leaflet__WEBPACK_IMPORTED_MODULE_1__["latLngBounds"])([[-526.640625, 83.02621885344846], [-164.53125, -52.482780222078205]]),
       maxBounds: Object(leaflet__WEBPACK_IMPORTED_MODULE_1__["latLngBounds"])([[-198.6328125, 84.05256097843035], [234.84375000000003, -24.846565348219734]]),
       markerLatLng: [47.31322, -1.319482],
-      koroni: [],
-      mode: "dark"
+      koroni: []
     };
   },
   methods: {
     // getKoroni() {
-    //   fetch("https://pomber.github.io/covid19/timeseries.json")
-    //     .then(responce => responce.json())
-    //     .then(data => (this.koroni = data));
     //   axios
     //     .get("https://pomber.github.io/covid19/timeseries.json")
     //     .then(response => (this.koroni = response.data));
@@ -7364,7 +7348,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.sidebar[data-v-52111eee] {\n  position: fixed;\n  width: 300px;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  background: whitesmoke;\n}\n.search[data-v-52111eee] {\n  position: fixed;\n  width: 235px;\n  height: 30px;\n  font-size: 20px;\n  border-radius: 8px;\n  border: solid deepskyblue;\n  right: 50px;\n  top: 220px;\n  display: inline-block;\n}\n.btn[data-v-52111eee] {\n  height: 90px;\n  width: 135px;\n  border-radius: 12px;\n  margin: 10px 5px 5px 5px;\n  font-size: 20px;\n}\n.total[data-v-52111eee] {\n  border: solid deepskyblue;\n  background: deepskyblue;\n  color: #004d66;\n}\n.activec[data-v-52111eee] {\n  border: solid red;\n  background: red;\n  color: #800000;\n}\n.recovered[data-v-52111eee] {\n  border: solid green;\n  background: green;\n  color: #043102;\n}\n.deaths[data-v-52111eee] {\n  border: solid grey;\n  background: grey;\n  color: #404040;\n}\n#graph[data-v-52111eee] {\n  position: fixed;\n  right: 0px;\n  top: 850px;\n  height: 80px;\n  width: 250px;\n  border-radius: 18px;\n  font-size: 20px;\n  color: black;\n}\n", ""]);
+exports.push([module.i, "\n.sidebar[data-v-52111eee] {\n  position: relative;\n  width: 300px;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  background: whitesmoke;\n}\n.search[data-v-52111eee] {\n  position: fixed;\n  width: 235px;\n  height: 30px;\n  font-size: 20px;\n  border-radius: 8px;\n  border: solid deepskyblue;\n  right: 50px;\n  top: 220px;\n  display: inline-block;\n}\n.btn[data-v-52111eee] {\n  height: 90px;\n  width: 135px;\n  border-radius: 12px;\n  margin: 10px 5px 5px 5px;\n  font-size: 20px;\n}\n.total[data-v-52111eee] {\n  border: solid deepskyblue;\n  background: deepskyblue;\n  color: #004d66;\n}\n.activec[data-v-52111eee] {\n  border: solid red;\n  background: red;\n  color: #800000;\n}\n.recovered[data-v-52111eee] {\n  border: solid green;\n  background: green;\n  color: #043102;\n}\n.deaths[data-v-52111eee] {\n  border: solid grey;\n  background: grey;\n  color: #404040;\n}\n#graph[data-v-52111eee] {\n  position: fixed;\n  right: 0px;\n  top: 850px;\n  height: 80px;\n  width: 250px;\n  border-radius: 18px;\n  font-size: 20px;\n  color: black;\n}\n", ""]);
 
 // exports
 
@@ -53128,6 +53112,29 @@ var render = function() {
           }
         },
         [
+          _c("l-control", { attrs: { position: "upper" } }, [
+            _c("div", { staticClass: "sidebar" }, [
+              _c("button", { staticClass: "btn total" }, [
+                _vm._v("Total cases")
+              ]),
+              _vm._v(" "),
+              _c("button", { staticClass: "btn activec" }, [
+                _vm._v("Active cases")
+              ]),
+              _vm._v(" "),
+              _c("button", { staticClass: "btn recovered" }, [
+                _vm._v("Recovered")
+              ]),
+              _vm._v(" "),
+              _c("button", { staticClass: "btn deaths" }, [_vm._v("Deaths")]),
+              _vm._v(" "),
+              _c("input", {
+                staticClass: "search",
+                attrs: { type: "text", placeholder: "Search" }
+              })
+            ])
+          ]),
+          _vm._v(" "),
           _c("l-tile-layer", {
             attrs: { url: _vm.url, attribution: _vm.attribution }
           })

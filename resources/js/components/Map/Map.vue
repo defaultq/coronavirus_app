@@ -9,7 +9,7 @@
       @update:center="centerUpdated"
       @update:bounds="boundsUpdated"
     >
-       <l-control position="upper">
+      <l-control position="upper">
         <div class="sidebar">
           <button class="btn total">Total cases</button>
           <button class="btn activec">Active cases</button>
@@ -17,7 +17,7 @@
           <button class="btn deaths">Deaths</button>
           <input type="text" class="search" placeholder="Search" />
         </div>
-  
+      </l-control>
       <l-tile-layer :url="url" :attribution="attribution" />
     </l-map>
   </div>
@@ -34,12 +34,12 @@ export default {
     LTileLayer,
     LPopup,
     LControl
-  
   },
   data() {
     return {
       url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
+      attribution:
+        '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
       zoom: 3,
       center: [0, 0],
       bounds: latLngBounds([
@@ -52,8 +52,7 @@ attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contri
       ]),
 
       markerLatLng: [47.31322, -1.319482],
-      koroni: [],
-    
+      koroni: []
     };
   },
   methods: {
