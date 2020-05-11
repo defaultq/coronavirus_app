@@ -9,13 +9,30 @@
       @update:center="centerUpdated"
       @update:bounds="boundsUpdated"
     >
-      <l-control position="upper">
-        <div class="sidebar">
-          <button class="btn total">Total cases</button>
-          <button class="btn activec">Active cases</button>
-          <button class="btn recovered">Recovered</button>
-          <button class="btn deaths">Deaths</button>
+     
+    <l-circle
+    
+      :lat-lng="circle.center"
+      :radius="circle.radius"
+      :color="circle.color"
+    />
+      <l-control class="sidebar">
+        <div >
+           
+          <button class="btn total">Total cases   </button>
+          <button class="btn activec">Active cases </button>
+          <button class="btn recovered">Recovered </button>
+          <button class="btn deaths">Deaths </button>
           <input type="text" class="search" placeholder="Search" />
+         
+         
+          </div>
+            <div>
+            <button  @click.prevent="show" class="graph"> Graphical representation </button>
+         <modal name="graphicalView">
+            heljo there *.*
+            <button @click.prevent="hide" class="close-btn"> X </button>
+          </modal> 
         </div>
       </l-control>
       <l-tile-layer :url="url" :attribution="attribution" />
@@ -23,17 +40,19 @@
   </div>
 </template>
 
+
 <script>
 import axios from "axios";
 import { latLngBounds } from "leaflet";
-import { LMap, LTileLayer, LPopup, LControl } from "vue2-leaflet";
+import { LMap, LTileLayer, LPopup, LControl, LCircle } from "vue2-leaflet";
 
 export default {
   components: {
     LMap,
     LTileLayer,
     LPopup,
-    LControl
+    LControl,
+    LCircle
   },
   data() {
     return {
@@ -50,18 +69,25 @@ export default {
         [-198.6328125, 84.05256097843035],
         [234.84375000000003, -24.846565348219734]
       ]),
+         
+       circle: {
+        center: [47.413220, -1.0482],
+        radius: 300000,
+        color: 'red'
+       },
+       koroni: ''
 
-      markerLatLng: [47.31322, -1.319482],
-      koroni: []
-    };
+    }
+  },
+  mounted() {      
+      axios
+      .get('/globally/latest')
+      .then( response => (this.koroni = response.data))
+     
+    
   },
   methods: {
-    // getKoroni() {
-    //   axios
-    //     .get("https://pomber.github.io/covid19/timeseries.json")
-    //     .then(response => (this.koroni = response.data));
-    // },
-
+    
     zoomUpdated(zoom) {
       this.zoom = zoom;
     },
@@ -71,36 +97,42 @@ export default {
     boundsUpdated(bounds) {
       this.bounds = bounds;
     },
-    show() {
-      this.$modal.show("Graphical");
-    },
-    hide() {
-      this.$modal.hide("Graphical");
-    }
+     show () {
+    this.$modal.show('graphicalView');
+  },
+  hide () {
+    this.$modal.hide('graphicalView');
   }
+
+  
+  }
+  
 };
 </script>
 
 <style scoped>
 .sidebar {
-  position: relative;
+  position: fixed;
   width: 300px;
-  top: 0;
-  right: 0;
-  bottom: 0;
+  top: 70px;
+  right: 0; 
   background: whitesmoke;
+  bottom: 0;
+  margin-right:0px ;
 }
 
 .search {
   position: fixed;
-  width: 235px;
-  height: 30px;
+  width: 250px;
+  height: 50px;
   font-size: 20px;
-  border-radius: 8px;
+  border-radius: 10px;
   border: solid deepskyblue;
-  right: 50px;
-  top: 220px;
+  border-width: 4px;
+  right: 40px;
+  top: 300px;
   display: inline-block;
+  background: transparent;
 }
 
 .btn {
@@ -134,14 +166,28 @@ export default {
   color: #404040;
 }
 
-#graph {
+.graph {
   position: fixed;
-  right: 0px;
-  top: 850px;
-  height: 80px;
+  right: 40px;
+  top: 360px;
+  height: 60px;
   width: 250px;
-  border-radius: 18px;
+  border-radius: 8px;
   font-size: 20px;
-  color: black;
+  color: grey;
+  background: transparent;
+  border-color: deepskyblue;
+  border-width: 4px;
+  
+}
+
+.close-btn {
+  background: #ff4d4d;
+  position: fixed;
+  right:130px;
+  width:60px;
+  height: 30px;
+  border-radius: 12px;
+
 }
 </style>

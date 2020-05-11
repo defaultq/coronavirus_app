@@ -1916,6 +1916,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'App',
   components: {
@@ -1964,6 +1965,24 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -1972,7 +1991,8 @@ __webpack_require__.r(__webpack_exports__);
     LMap: vue2_leaflet__WEBPACK_IMPORTED_MODULE_2__["LMap"],
     LTileLayer: vue2_leaflet__WEBPACK_IMPORTED_MODULE_2__["LTileLayer"],
     LPopup: vue2_leaflet__WEBPACK_IMPORTED_MODULE_2__["LPopup"],
-    LControl: vue2_leaflet__WEBPACK_IMPORTED_MODULE_2__["LControl"]
+    LControl: vue2_leaflet__WEBPACK_IMPORTED_MODULE_2__["LControl"],
+    LCircle: vue2_leaflet__WEBPACK_IMPORTED_MODULE_2__["LCircle"]
   },
   data: function data() {
     return {
@@ -1982,16 +2002,22 @@ __webpack_require__.r(__webpack_exports__);
       center: [0, 0],
       bounds: Object(leaflet__WEBPACK_IMPORTED_MODULE_1__["latLngBounds"])([[-526.640625, 83.02621885344846], [-164.53125, -52.482780222078205]]),
       maxBounds: Object(leaflet__WEBPACK_IMPORTED_MODULE_1__["latLngBounds"])([[-198.6328125, 84.05256097843035], [234.84375000000003, -24.846565348219734]]),
-      markerLatLng: [47.31322, -1.319482],
-      koroni: []
+      circle: {
+        center: [47.413220, -1.0482],
+        radius: 300000,
+        color: 'red'
+      },
+      koroni: ''
     };
   },
+  mounted: function mounted() {
+    var _this = this;
+
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/globally/latest').then(function (response) {
+      return _this.koroni = response.data;
+    });
+  },
   methods: {
-    // getKoroni() {
-    //   axios
-    //     .get("https://pomber.github.io/covid19/timeseries.json")
-    //     .then(response => (this.koroni = response.data));
-    // },
     zoomUpdated: function zoomUpdated(zoom) {
       this.zoom = zoom;
     },
@@ -2002,10 +2028,10 @@ __webpack_require__.r(__webpack_exports__);
       this.bounds = bounds;
     },
     show: function show() {
-      this.$modal.show("Graphical");
+      this.$modal.show('graphicalView');
     },
     hide: function hide() {
-      this.$modal.hide("Graphical");
+      this.$modal.hide('graphicalView');
     }
   }
 });
@@ -7348,7 +7374,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.sidebar[data-v-52111eee] {\n  position: relative;\n  width: 300px;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  background: whitesmoke;\n}\n.search[data-v-52111eee] {\n  position: fixed;\n  width: 235px;\n  height: 30px;\n  font-size: 20px;\n  border-radius: 8px;\n  border: solid deepskyblue;\n  right: 50px;\n  top: 220px;\n  display: inline-block;\n}\n.btn[data-v-52111eee] {\n  height: 90px;\n  width: 135px;\n  border-radius: 12px;\n  margin: 10px 5px 5px 5px;\n  font-size: 20px;\n}\n.total[data-v-52111eee] {\n  border: solid deepskyblue;\n  background: deepskyblue;\n  color: #004d66;\n}\n.activec[data-v-52111eee] {\n  border: solid red;\n  background: red;\n  color: #800000;\n}\n.recovered[data-v-52111eee] {\n  border: solid green;\n  background: green;\n  color: #043102;\n}\n.deaths[data-v-52111eee] {\n  border: solid grey;\n  background: grey;\n  color: #404040;\n}\n#graph[data-v-52111eee] {\n  position: fixed;\n  right: 0px;\n  top: 850px;\n  height: 80px;\n  width: 250px;\n  border-radius: 18px;\n  font-size: 20px;\n  color: black;\n}\n", ""]);
+exports.push([module.i, "\n.sidebar[data-v-52111eee] {\n  position: fixed;\n  width: 300px;\n  top: 70px;\n  right: 0; \n  background: whitesmoke;\n  bottom: 0;\n  margin-right:0px ;\n}\n.search[data-v-52111eee] {\n  position: fixed;\n  width: 250px;\n  height: 50px;\n  font-size: 20px;\n  border-radius: 10px;\n  border: solid deepskyblue;\n  border-width: 4px;\n  right: 40px;\n  top: 300px;\n  display: inline-block;\n  background: transparent;\n}\n.btn[data-v-52111eee] {\n  height: 90px;\n  width: 135px;\n  border-radius: 12px;\n  margin: 10px 5px 5px 5px;\n  font-size: 20px;\n}\n.total[data-v-52111eee] {\n  border: solid deepskyblue;\n  background: deepskyblue;\n  color: #004d66;\n}\n.activec[data-v-52111eee] {\n  border: solid red;\n  background: red;\n  color: #800000;\n}\n.recovered[data-v-52111eee] {\n  border: solid green;\n  background: green;\n  color: #043102;\n}\n.deaths[data-v-52111eee] {\n  border: solid grey;\n  background: grey;\n  color: #404040;\n}\n.graph[data-v-52111eee] {\n  position: fixed;\n  right: 40px;\n  top: 360px;\n  height: 60px;\n  width: 250px;\n  border-radius: 8px;\n  font-size: 20px;\n  color: grey;\n  background: transparent;\n  border-color: deepskyblue;\n  border-width: 4px;\n}\n.close-btn[data-v-52111eee] {\n  background: #ff4d4d;\n  position: fixed;\n  right:130px;\n  width:60px;\n  height: 30px;\n  border-radius: 12px;\n}\n", ""]);
 
 // exports
 
@@ -53112,27 +53138,72 @@ var render = function() {
           }
         },
         [
-          _c("l-control", { attrs: { position: "upper" } }, [
-            _c("div", { staticClass: "sidebar" }, [
+          _c("l-circle", {
+            attrs: {
+              "lat-lng": _vm.circle.center,
+              radius: _vm.circle.radius,
+              color: _vm.circle.color
+            }
+          }),
+          _vm._v(" "),
+          _c("l-control", { staticClass: "sidebar" }, [
+            _c("div", [
               _c("button", { staticClass: "btn total" }, [
-                _vm._v("Total cases")
+                _vm._v("Total cases   ")
               ]),
               _vm._v(" "),
               _c("button", { staticClass: "btn activec" }, [
-                _vm._v("Active cases")
+                _vm._v("Active cases ")
               ]),
               _vm._v(" "),
               _c("button", { staticClass: "btn recovered" }, [
-                _vm._v("Recovered")
+                _vm._v("Recovered ")
               ]),
               _vm._v(" "),
-              _c("button", { staticClass: "btn deaths" }, [_vm._v("Deaths")]),
+              _c("button", { staticClass: "btn deaths" }, [_vm._v("Deaths ")]),
               _vm._v(" "),
               _c("input", {
                 staticClass: "search",
                 attrs: { type: "text", placeholder: "Search" }
               })
-            ])
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              [
+                _c(
+                  "button",
+                  {
+                    staticClass: "graph",
+                    on: {
+                      click: function($event) {
+                        $event.preventDefault()
+                        return _vm.show($event)
+                      }
+                    }
+                  },
+                  [_vm._v(" Graphical representation ")]
+                ),
+                _vm._v(" "),
+                _c("modal", { attrs: { name: "graphicalView" } }, [
+                  _vm._v("\n          heljo there *.*\n          "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "close-btn",
+                      on: {
+                        click: function($event) {
+                          $event.preventDefault()
+                          return _vm.hide($event)
+                        }
+                      }
+                    },
+                    [_vm._v(" X ")]
+                  )
+                ])
+              ],
+              1
+            )
           ]),
           _vm._v(" "),
           _c("l-tile-layer", {
@@ -79250,8 +79321,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/viktor/Desktop/coronavirus_app/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/viktor/Desktop/coronavirus_app/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/jovanas/Desktop/coronavirus_app/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/jovanas/Desktop/coronavirus_app/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
