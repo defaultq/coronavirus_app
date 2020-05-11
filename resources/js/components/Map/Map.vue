@@ -9,30 +9,21 @@
       @update:center="centerUpdated"
       @update:bounds="boundsUpdated"
     >
-     
-    <l-circle
-    
-      :lat-lng="circle.center"
-      :radius="circle.radius"
-      :color="circle.color"
-    />
+      <l-circle :lat-lng="circle.center" :radius="circle.radius" :color="circle.color" />
       <l-control class="sidebar">
-        <div >
-           
-          <button class="btn total">Total cases   </button>
-          <button class="btn activec">Active cases </button>
-          <button class="btn recovered">Recovered </button>
-          <button class="btn deaths">Deaths </button>
+        <div>
+          <button class="btn total">Total cases</button>
+          <button class="btn activec">Active cases</button>
+          <button class="btn recovered">Recovered</button>
+          <button class="btn deaths">Deaths</button>
           <input type="text" class="search" placeholder="Search" />
-         
-         
-          </div>
-            <div>
-            <button  @click.prevent="show" class="graph"> Graphical representation </button>
-         <modal name="graphicalView">
+        </div>
+        <div>
+          <button @click.prevent="show" class="graph">Graphical representation</button>
+          <modal name="graphicalView">
             heljo there *.*
-            <button @click.prevent="hide" class="close-btn"> X </button>
-          </modal> 
+            <button @click.prevent="hide" class="close-btn">X</button>
+          </modal>
         </div>
       </l-control>
       <l-tile-layer :url="url" :attribution="attribution" />
@@ -69,25 +60,22 @@ export default {
         [-198.6328125, 84.05256097843035],
         [234.84375000000003, -24.846565348219734]
       ]),
-         
-       circle: {
-        center: [47.413220, -1.0482],
-        radius: 300000,
-        color: 'red'
-       },
-       koroni: ''
 
-    }
+      circle: {
+        center: [47.41322, -1.0482],
+        radius: 300000,
+        color: "red"
+      },
+      koroni: ""
+    };
   },
-  mounted() {      
-      axios
-      .get('/globally/latest')
-      .then( response => (this.koroni = response.data))
-     
-    
+  mounted() {
+    axios
+      .get("/globally_latest")
+      .then(response => (this.koroni = response.data));
+    console.log(this.koroni);
   },
   methods: {
-    
     zoomUpdated(zoom) {
       this.zoom = zoom;
     },
@@ -97,16 +85,13 @@ export default {
     boundsUpdated(bounds) {
       this.bounds = bounds;
     },
-     show () {
-    this.$modal.show('graphicalView');
-  },
-  hide () {
-    this.$modal.hide('graphicalView');
+    show() {
+      this.$modal.show("graphicalView");
+    },
+    hide() {
+      this.$modal.hide("graphicalView");
+    }
   }
-
-  
-  }
-  
 };
 </script>
 
@@ -115,10 +100,10 @@ export default {
   position: fixed;
   width: 300px;
   top: 70px;
-  right: 0; 
+  right: 0;
   background: whitesmoke;
   bottom: 0;
-  margin-right:0px ;
+  margin-right: 0px;
 }
 
 .search {
@@ -178,16 +163,14 @@ export default {
   background: transparent;
   border-color: deepskyblue;
   border-width: 4px;
-  
 }
 
 .close-btn {
   background: #ff4d4d;
   position: fixed;
-  right:130px;
-  width:60px;
+  right: 130px;
+  width: 60px;
   height: 30px;
   border-radius: 12px;
-
 }
 </style>

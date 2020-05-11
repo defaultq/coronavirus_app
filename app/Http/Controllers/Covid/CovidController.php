@@ -16,6 +16,7 @@ class CovidController extends Controller
         $response['deaths'] = AppGlobalData::where('date', $date->toDateString())->get()->sum('deaths');
         $response['confirmed'] = AppGlobalData::where('date', $date->toDateString())->get()->sum('confirmed');
         $response['recovered'] = AppGlobalData::where('date', $date->toDateString())->get()->sum('recovered');
+        $response['active_cases'] = $response['confirmed'] - $response['recovered'] - $response['deaths'];
 
         return  $response;
     }
@@ -32,6 +33,7 @@ class CovidController extends Controller
 
     public function country_all(Request $request, $country)
     {
+        // return $country;
         return AppGlobalData::where('country', $country)->get();
     }
 }

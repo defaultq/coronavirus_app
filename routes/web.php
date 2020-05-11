@@ -1,9 +1,7 @@
 <?php
 
-use Illuminate\Support\Carbon;
 
 use Illuminate\Support\Facades\Route;
-use App\GlobalData;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,7 +19,6 @@ Route::get('/', function () {
 Route::get('API', function () {
 
     return view('api');
-
 })->middleware('auth');
 
 Auth::routes();
@@ -31,4 +28,4 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/globally_latest', 'Covid\CovidController@global_latest');
 Route::get('/{country}/latest', 'Covid\CovidController@country_latest');
 Route::get('/{country}/{date}', 'Covid\CovidController@by_country_date');
-Route::get('/{country}/all', 'Covid\CovidController@country_all');
+Route::get('/country/{country}/all', 'Covid\CovidController@country_all');
