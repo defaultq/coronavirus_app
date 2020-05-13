@@ -2002,12 +2002,9 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   mounted: function mounted() {
-    var _this = this;
-
-    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/globally_latest").then(function (response) {
-      return _this.koroni = response.data;
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/country/Albania/all").then(function (response) {
+      console.log(response.data);
     });
-    console.log(this.koroni);
   },
   methods: {
     zoomUpdated: function zoomUpdated(zoom) {

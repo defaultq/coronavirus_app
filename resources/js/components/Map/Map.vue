@@ -70,10 +70,9 @@ export default {
     };
   },
   mounted() {
-    axios
-      .get("/globally_latest")
-      .then(response => (this.koroni = response.data));
-    console.log(this.koroni);
+    axios.get("/country/Albania/all").then(response => {
+      console.log(response.data);
+    });
   },
   methods: {
     zoomUpdated(zoom) {
