@@ -9,7 +9,7 @@ use Illuminate\Support\Carbon;
 
 class CovidController extends Controller
 {
-    public function global_latest(Request $request)
+    public function global_latest_number(Request $request)
     {
         $response = [];
         $date = Carbon::now()->yesterday();
@@ -19,6 +19,14 @@ class CovidController extends Controller
         $response['active_cases'] = $response['confirmed'] - $response['recovered'] - $response['deaths'];
 
         return  $response;
+    }
+
+    public function global_latest(Request $request)
+    {
+
+        $date = Carbon::now()->yesterday();
+
+        return AppGlobalData::where('date', $date)->get();
     }
 
     public function country_latest(Request $request, $country)
