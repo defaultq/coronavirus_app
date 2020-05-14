@@ -12,10 +12,10 @@
       <l-circle :lat-lng="circle.center" :radius="circle.radius" :color="circle.color" />
       <l-control class="sidebar">
         <div>
-          <button class="btn total">Total cases</button>
-          <button class="btn activec">Active cases</button>
-          <button class="btn recovered">Recovered</button>
-          <button class="btn deaths">Deaths</button>
+          <button class="btn total">Total cases  {{globally.confirmed}}</button>
+          <button class="btn activec">Active cases  </button>
+          <button class="btn recovered">Recovered {{globally.recovered}}</button>
+          <button class="btn deaths">Deaths  {{globally.deaths}}</button>
           <input type="text" class="search" placeholder="Search" />
         </div>
         <div>
@@ -66,12 +66,13 @@ export default {
         radius: 300000,
         color: "red"
       },
-      koroni: ""
+      globally: ""
     };
   },
   mounted() {
-    axios.get("/country/Albania/all").then(response => {
-      console.log(response.data);
+    axios.get("/globally_latest").then(response => {
+      this.globally = response.data;  
+    
     });
   },
   methods: {
@@ -90,6 +91,8 @@ export default {
     hide() {
       this.$modal.hide("graphicalView");
     }
+  
+    
   }
 };
 </script>

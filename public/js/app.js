@@ -1998,12 +1998,14 @@ __webpack_require__.r(__webpack_exports__);
         radius: 300000,
         color: "red"
       },
-      koroni: ""
+      globally: ""
     };
   },
   mounted: function mounted() {
-    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/country/Albania/all").then(function (response) {
-      console.log(response.data);
+    var _this = this;
+
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/globally_latest").then(function (response) {
+      _this.globally = response.data;
     });
   },
   methods: {
@@ -7363,7 +7365,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.sidebar[data-v-52111eee] {\n  position: fixed;\n  width: 300px;\n  top: 70px;\n  right: 0;\n  background: whitesmoke;\n  bottom: 0;\n  margin-right: 0px;\n}\n.search[data-v-52111eee] {\n  position: fixed;\n  width: 250px;\n  height: 50px;\n  font-size: 20px;\n  border-radius: 10px;\n  border: solid deepskyblue;\n  border-width: 4px;\n  right: 40px;\n  top: 300px;\n  display: inline-block;\n  background: transparent;\n}\n.btn[data-v-52111eee] {\n  height: 90px;\n  width: 135px;\n  border-radius: 12px;\n  margin: 10px 5px 5px 5px;\n  font-size: 20px;\n}\n.total[data-v-52111eee] {\n  border: solid deepskyblue;\n  background: deepskyblue;\n  color: #004d66;\n}\n.activec[data-v-52111eee] {\n  border: solid red;\n  background: red;\n  color: #800000;\n}\n.recovered[data-v-52111eee] {\n  border: solid green;\n  background: green;\n  color: #043102;\n}\n.deaths[data-v-52111eee] {\n  border: solid grey;\n  background: grey;\n  color: #404040;\n}\n.graph[data-v-52111eee] {\n  position: fixed;\n  right: 40px;\n  top: 360px;\n  height: 60px;\n  width: 250px;\n  border-radius: 8px;\n  font-size: 20px;\n  color: grey;\n  background: transparent;\n  border-color: deepskyblue;\n  border-width: 4px;\n}\n.close-btn[data-v-52111eee] {\n  background: #ff4d4d;\n  position: fixed;\n  right: 130px;\n  width: 60px;\n  height: 30px;\n  border-radius: 12px;\n}\n", ""]);
+exports.push([module.i, "\n.sidebar[data-v-52111eee] {\r\n  position: fixed;\r\n  width: 300px;\r\n  top: 70px;\r\n  right: 0;\r\n  background: whitesmoke;\r\n  bottom: 0;\r\n  margin-right: 0px;\n}\n.search[data-v-52111eee] {\r\n  position: fixed;\r\n  width: 250px;\r\n  height: 50px;\r\n  font-size: 20px;\r\n  border-radius: 10px;\r\n  border: solid deepskyblue;\r\n  border-width: 4px;\r\n  right: 40px;\r\n  top: 300px;\r\n  display: inline-block;\r\n  background: transparent;\n}\n.btn[data-v-52111eee] {\r\n  height: 90px;\r\n  width: 135px;\r\n  border-radius: 12px;\r\n  margin: 10px 5px 5px 5px;\r\n  font-size: 20px;\n}\n.total[data-v-52111eee] {\r\n  border: solid deepskyblue;\r\n  background: deepskyblue;\r\n  color: #004d66;\n}\n.activec[data-v-52111eee] {\r\n  border: solid red;\r\n  background: red;\r\n  color: #800000;\n}\n.recovered[data-v-52111eee] {\r\n  border: solid green;\r\n  background: green;\r\n  color: #043102;\n}\n.deaths[data-v-52111eee] {\r\n  border: solid grey;\r\n  background: grey;\r\n  color: #404040;\n}\n.graph[data-v-52111eee] {\r\n  position: fixed;\r\n  right: 40px;\r\n  top: 360px;\r\n  height: 60px;\r\n  width: 250px;\r\n  border-radius: 8px;\r\n  font-size: 20px;\r\n  color: grey;\r\n  background: transparent;\r\n  border-color: deepskyblue;\r\n  border-width: 4px;\n}\n.close-btn[data-v-52111eee] {\r\n  background: #ff4d4d;\r\n  position: fixed;\r\n  right: 130px;\r\n  width: 60px;\r\n  height: 30px;\r\n  border-radius: 12px;\n}\r\n", ""]);
 
 // exports
 
@@ -53138,18 +53140,20 @@ var render = function() {
           _c("l-control", { staticClass: "sidebar" }, [
             _c("div", [
               _c("button", { staticClass: "btn total" }, [
-                _vm._v("Total cases")
+                _vm._v("Total cases  " + _vm._s(_vm.globally.confirmed))
               ]),
               _vm._v(" "),
               _c("button", { staticClass: "btn activec" }, [
-                _vm._v("Active cases")
+                _vm._v("Active cases  ")
               ]),
               _vm._v(" "),
               _c("button", { staticClass: "btn recovered" }, [
-                _vm._v("Recovered")
+                _vm._v("Recovered " + _vm._s(_vm.globally.recovered))
               ]),
               _vm._v(" "),
-              _c("button", { staticClass: "btn deaths" }, [_vm._v("Deaths")]),
+              _c("button", { staticClass: "btn deaths" }, [
+                _vm._v("Deaths  " + _vm._s(_vm.globally.deaths))
+              ]),
               _vm._v(" "),
               _c("input", {
                 staticClass: "search",
@@ -79310,8 +79314,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/viktor/Desktop/coronavirus_app/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/viktor/Desktop/coronavirus_app/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/jovanas/Desktop/coronavirus_app/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/jovanas/Desktop/coronavirus_app/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
