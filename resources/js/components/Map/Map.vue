@@ -12,10 +12,10 @@
       <l-circle :lat-lng="circle.center" :radius="circle.radius" :color="circle.color" />
       <l-control class="sidebar">
         <div>
-          <button class="btn total">Total cases  {{globally.confirmed}}</button>
-          <button class="btn activec">Active cases  </button>
-          <button class="btn recovered">Recovered {{globally.recovered}}</button>
-          <button class="btn deaths">Deaths  {{globally.deaths}}</button>
+          <button class="btn total">Total cases  {{globallyNum.confirmed}}</button>
+          <button class="btn activec">Active cases {{globallyNum.active_cases}} </button>
+          <button class="btn recovered">Recovered {{globallyNum.recovered}}</button>
+          <button class="btn deaths">Deaths  {{globallyNum.deaths}}</button>
           <input type="text" class="search" placeholder="Search" />
         </div>
         <div>
@@ -24,7 +24,8 @@
             heljo there *.*
             <button @click.prevent="hide" class="close-btn">X</button>
           </modal>
-        </div>
+                    </div>
+                  {{globallyLatest}}
       </l-control>
       <l-tile-layer :url="url" :attribution="attribution" />
     </l-map>
@@ -66,14 +67,21 @@ export default {
         radius: 300000,
         color: "red"
       },
-      globally: ""
+      globallyNum:  "",
+      globallyLatest: ""
     };
   },
   mounted() {
-    axios.get("/globally_latest").then(response => {
-      this.globally = response.data;  
+     axios.all([
+        axios.get('/globally_latest'),
+     axios.get('/globally_latest_number'),
+  ])
+  .then(axios.spread((latestRes,numRes) => {
+    this.globallyLatest = latestRes.data;
+    this.globallyNum = numRes.data;
     
-    });
+  }));
+
   },
   methods: {
     zoomUpdated(zoom) {

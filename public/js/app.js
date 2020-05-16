@@ -1974,6 +1974,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 
@@ -1998,15 +1999,17 @@ __webpack_require__.r(__webpack_exports__);
         radius: 300000,
         color: "red"
       },
-      globally: ""
+      globallyNum: "",
+      globallyLatest: ""
     };
   },
   mounted: function mounted() {
     var _this = this;
 
-    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/globally_latest").then(function (response) {
-      _this.globally = response.data;
-    });
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.all([axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/globally_latest'), axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/globally_latest_number')]).then(axios__WEBPACK_IMPORTED_MODULE_0___default.a.spread(function (latestRes, numRes) {
+      _this.globallyLatest = latestRes.data;
+      _this.globallyNum = numRes.data;
+    }));
   },
   methods: {
     zoomUpdated: function zoomUpdated(zoom) {
@@ -53140,19 +53143,21 @@ var render = function() {
           _c("l-control", { staticClass: "sidebar" }, [
             _c("div", [
               _c("button", { staticClass: "btn total" }, [
-                _vm._v("Total cases  " + _vm._s(_vm.globally.confirmed))
+                _vm._v("Total cases  " + _vm._s(_vm.globallyNum.confirmed))
               ]),
               _vm._v(" "),
               _c("button", { staticClass: "btn activec" }, [
-                _vm._v("Active cases  ")
+                _vm._v(
+                  "Active cases " + _vm._s(_vm.globallyNum.active_cases) + " "
+                )
               ]),
               _vm._v(" "),
               _c("button", { staticClass: "btn recovered" }, [
-                _vm._v("Recovered " + _vm._s(_vm.globally.recovered))
+                _vm._v("Recovered " + _vm._s(_vm.globallyNum.recovered))
               ]),
               _vm._v(" "),
               _c("button", { staticClass: "btn deaths" }, [
-                _vm._v("Deaths  " + _vm._s(_vm.globally.deaths))
+                _vm._v("Deaths  " + _vm._s(_vm.globallyNum.deaths))
               ]),
               _vm._v(" "),
               _c("input", {
@@ -53196,7 +53201,8 @@ var render = function() {
                 ])
               ],
               1
-            )
+            ),
+            _vm._v("\n                " + _vm._s(_vm.globallyLatest) + "\n    ")
           ]),
           _vm._v(" "),
           _c("l-tile-layer", {
