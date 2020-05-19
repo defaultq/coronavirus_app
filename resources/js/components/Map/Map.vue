@@ -9,23 +9,41 @@
       @update:center="centerUpdated"
       @update:bounds="boundsUpdated"
     >
-      <l-circle :lat-lng="circle.center" :radius="circle.radius" :color="circle.color" />
+     
+      <l-circle  v-for="country in globallyLatest" :key="country.$index" :lat-lng="[country.latitude, country.longitude]"  radius=200000  > 
+      <l-popup v-on:mouseover="active = !active" >
+       Country: {{country.country}}
+        <br />
+       Confirmed: {{country.confirmed}}
+      <br />
+      Recovered:  {{country.recovered}}
+        <br />
+      
+         Deaths: {{country.deaths}}
+       
+       
+
+        </l-popup>
+      </l-circle>
       <l-control class="sidebar">
         <div>
           <button class="btn total">Total cases  {{globallyNum.confirmed}}</button>
           <button class="btn activec">Active cases {{globallyNum.active_cases}} </button>
           <button class="btn recovered">Recovered {{globallyNum.recovered}}</button>
           <button class="btn deaths">Deaths  {{globallyNum.deaths}}</button>
-          <input type="text" class="search" placeholder="Search" />
+                  
         </div>
+
+        <vue-fuse :keys="globallyLatest" :list="globallyLatest" :placeholder="Search" :defaultAll="false"></vue-fuse>
         <div>
           <button @click.prevent="show" class="graph">Graphical representation</button>
           <modal name="graphicalView">
             heljo there *.*
             <button @click.prevent="hide" class="close-btn">X</button>
           </modal>
-                    </div>
-                  {{globallyLatest}}
+          
+             </div> 
+             
       </l-control>
       <l-tile-layer :url="url" :attribution="attribution" />
     </l-map>
@@ -34,6 +52,7 @@
 
 
 <script>
+
 import axios from "axios";
 import { latLngBounds } from "leaflet";
 import { LMap, LTileLayer, LPopup, LControl, LCircle } from "vue2-leaflet";
@@ -61,14 +80,11 @@ export default {
         [-198.6328125, 84.05256097843035],
         [234.84375000000003, -24.846565348219734]
       ]),
+         active : false,
 
-      circle: {
-        center: [47.41322, -1.0482],
-        radius: 300000,
-        color: "red"
-      },
       globallyNum:  "",
-      globallyLatest: ""
+      globallyLatest: "",
+      search: ""
     };
   },
   mounted() {
@@ -98,10 +114,13 @@ export default {
     },
     hide() {
       this.$modal.hide("graphicalView");
-    }
-  
+    },
+    searchCountries(){
+    this.$search(this.term, this.bikes, this.options).then(results => {
+  this.searchResults = results
+})
     
-  }
+  }}
 };
 </script>
 
