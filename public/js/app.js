@@ -2018,12 +2018,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
 
 
 
@@ -53292,15 +53286,10 @@ var render = function() {
               _vm._v(" "),
               _c("vue-fuse", {
                 attrs: {
-                  eventName: _vm.fuseResultsUpdated,
-                  keys: [
-                    _vm.globallyLatest.country,
-                    _vm.globallyLatest.confirmed,
-                    _vm.globallyLatest.active_cases,
-                    _vm.globallyLatest.recovered,
-                    _vm.globallyLatest.deaths
-                  ],
-                  defaultAll: false
+                  keys: _vm.globallyLatest.country,
+                  list: _vm.globallyLatest,
+                  defaultAll: false,
+                  eventName: _vm.fuseResultsUpdated
                 },
                 on: {
                   fuseResultsUpdated: function($event) {

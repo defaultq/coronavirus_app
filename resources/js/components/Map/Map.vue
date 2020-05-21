@@ -43,16 +43,10 @@
                 </div>
 
                 <vue-fuse
-                    
-                    :eventName="fuseResultsUpdated"
-                    :keys="[
-                        globallyLatest.country,
-                        globallyLatest.confirmed,
-                        globallyLatest.active_cases,
-                        globallyLatest.recovered,
-                        globallyLatest.deaths
-                    ]"
-                    :defaultAll="false"
+                  :keys="globallyLatest.country"
+                  :list="globallyLatest"
+                  :defaultAll="false"                  
+                    :eventName="fuseResultsUpdated"               
                     @fuseResultsUpdated="results($event)"
                 >
                 </vue-fuse>
