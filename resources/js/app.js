@@ -8,12 +8,12 @@ require('./bootstrap');
 
 import Vue from 'vue';
 import App from './App.vue';
-import VModal from 'vue-js-modal'
-import VueFuse from 'vue-fuse'
+import VModal from 'vue-js-modal';
+import VueFuse from 'vue-fuse';
  
-Vue.use(VueFuse)
+Vue.use(VueFuse);
 
-Vue.use(VModal)
+Vue.use(VModal);
 
 
 Vue.config.productionTip = false;

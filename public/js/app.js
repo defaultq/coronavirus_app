@@ -1993,6 +1993,37 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -2014,19 +2045,21 @@ __webpack_require__.r(__webpack_exports__);
       maxBounds: Object(leaflet__WEBPACK_IMPORTED_MODULE_1__["latLngBounds"])([[-198.6328125, 84.05256097843035], [234.84375000000003, -24.846565348219734]]),
       active: false,
       globallyNum: "",
-      globallyLatest: "",
-      search: ""
+      globallyLatest: ""
     };
   },
   mounted: function mounted() {
     var _this = this;
 
-    axios__WEBPACK_IMPORTED_MODULE_0___default.a.all([axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/globally_latest'), axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/globally_latest_number')]).then(axios__WEBPACK_IMPORTED_MODULE_0___default.a.spread(function (latestRes, numRes) {
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.all([axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/globally_latest"), axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/globally_latest_number")]).then(axios__WEBPACK_IMPORTED_MODULE_0___default.a.spread(function (latestRes, numRes) {
       _this.globallyLatest = latestRes.data;
       _this.globallyNum = numRes.data;
     }));
   },
   methods: {
+    results: function results(_results) {
+      this.result = _results;
+    },
     zoomUpdated: function zoomUpdated(zoom) {
       this.zoom = zoom;
     },
@@ -2041,13 +2074,6 @@ __webpack_require__.r(__webpack_exports__);
     },
     hide: function hide() {
       this.$modal.hide("graphicalView");
-    },
-    searchCountries: function searchCountries() {
-      var _this2 = this;
-
-      this.$search(this.term, this.bikes, this.options).then(function (results) {
-        _this2.searchResults = results;
-      });
     }
   }
 });
@@ -7390,7 +7416,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.sidebar[data-v-52111eee] {\r\n  position: fixed;\r\n  width: 300px;\r\n  top: 70px;\r\n  right: 0;\r\n  background: whitesmoke;\r\n  bottom: 0;\r\n  margin-right: 0px;\n}\n.search[data-v-52111eee] {\r\n  position: fixed;\r\n  width: 250px;\r\n  height: 50px;\r\n  font-size: 20px;\r\n  border-radius: 10px;\r\n  border: solid deepskyblue;\r\n  border-width: 4px;\r\n  right: 40px;\r\n  top: 300px;\r\n  display: inline-block;\r\n  background: transparent;\n}\n.btn[data-v-52111eee] {\r\n  height: 90px;\r\n  width: 135px;\r\n  border-radius: 12px;\r\n  margin: 10px 5px 5px 5px;\r\n  font-size: 20px;\n}\n.total[data-v-52111eee] {\r\n  border: solid deepskyblue;\r\n  background: deepskyblue;\r\n  color: #004d66;\n}\n.activec[data-v-52111eee] {\r\n  border: solid red;\r\n  background: red;\r\n  color: #800000;\n}\n.recovered[data-v-52111eee] {\r\n  border: solid green;\r\n  background: green;\r\n  color: #043102;\n}\n.deaths[data-v-52111eee] {\r\n  border: solid grey;\r\n  background: grey;\r\n  color: #404040;\n}\n.graph[data-v-52111eee] {\r\n  position: fixed;\r\n  right: 40px;\r\n  top: 360px;\r\n  height: 60px;\r\n  width: 250px;\r\n  border-radius: 8px;\r\n  font-size: 20px;\r\n  color: grey;\r\n  background: transparent;\r\n  border-color: deepskyblue;\r\n  border-width: 4px;\n}\n.close-btn[data-v-52111eee] {\r\n  background: #ff4d4d;\r\n  position: fixed;\r\n  right: 130px;\r\n  width: 60px;\r\n  height: 30px;\r\n  border-radius: 12px;\n}\r\n", ""]);
+exports.push([module.i, "\n.sidebar[data-v-52111eee] {\r\n    position: fixed;\r\n    width: 300px;\r\n    top: 70px;\r\n    right: 0;\r\n    background: whitesmoke;\r\n    bottom: 0;\r\n    margin-right: 0px;\n}\n.search[data-v-52111eee] {\r\n    position: fixed;\r\n    width: 250px;\r\n    height: 50px;\r\n    font-size: 20px;\r\n    border-radius: 10px;\r\n    border: solid deepskyblue;\r\n    border-width: 4px;\r\n    right: 40px;\r\n    top: 300px;\r\n    display: inline-block;\r\n    background: transparent;\n}\n.btn[data-v-52111eee] {\r\n    height: 90px;\r\n    width: 135px;\r\n    border-radius: 12px;\r\n    margin: 10px 5px 5px 5px;\r\n    font-size: 20px;\n}\n.total[data-v-52111eee] {\r\n    border: solid deepskyblue;\r\n    background: deepskyblue;\r\n    color: #004d66;\n}\n.activec[data-v-52111eee] {\r\n    border: solid red;\r\n    background: red;\r\n    color: #800000;\n}\n.recovered[data-v-52111eee] {\r\n    border: solid green;\r\n    background: green;\r\n    color: #043102;\n}\n.deaths[data-v-52111eee] {\r\n    border: solid grey;\r\n    background: grey;\r\n    color: #404040;\n}\n.graph[data-v-52111eee] {\r\n    position: fixed;\r\n    right: 40px;\r\n    top: 360px;\r\n    height: 60px;\r\n    width: 250px;\r\n    border-radius: 8px;\r\n    font-size: 20px;\r\n    color: grey;\r\n    background: transparent;\r\n    border-color: deepskyblue;\r\n    border-width: 4px;\n}\n.close-btn[data-v-52111eee] {\r\n    background: #ff4d4d;\r\n    position: fixed;\r\n    right: 130px;\r\n    width: 60px;\r\n    height: 30px;\r\n    border-radius: 12px;\n}\r\n", ""]);
 
 // exports
 
@@ -53182,7 +53208,7 @@ var render = function() {
                 key: country.$index,
                 attrs: {
                   "lat-lng": [country.latitude, country.longitude],
-                  radius: "200000"
+                  radius: 200000
                 }
               },
               [
@@ -53197,25 +53223,27 @@ var render = function() {
                   },
                   [
                     _vm._v(
-                      "\n     Country: " + _vm._s(country.country) + "\n      "
+                      "\n                Country: " +
+                        _vm._s(country.country) +
+                        "\n                "
                     ),
                     _c("br"),
                     _vm._v(
-                      "\n     Confirmed: " +
+                      "\n                Confirmed: " +
                         _vm._s(country.confirmed) +
-                        "\n    "
+                        "\n                "
                     ),
                     _c("br"),
                     _vm._v(
-                      "\n    Recovered:  " +
+                      "\n                Recovered: " +
                         _vm._s(country.recovered) +
-                        "\n      "
+                        "\n                "
                     ),
                     _c("br"),
                     _vm._v(
-                      "\n    \n       Deaths: " +
+                      "\n\n                Deaths: " +
                         _vm._s(country.deaths) +
-                        "\n     \n     \n\n      "
+                        "\n            "
                     )
                   ]
                 )
@@ -53230,31 +53258,69 @@ var render = function() {
             [
               _c("div", [
                 _c("button", { staticClass: "btn total" }, [
-                  _vm._v("Total cases  " + _vm._s(_vm.globallyNum.confirmed))
+                  _vm._v(
+                    "\n                    Total cases " +
+                      _vm._s(_vm.globallyNum.confirmed) +
+                      "\n                "
+                  )
                 ]),
                 _vm._v(" "),
                 _c("button", { staticClass: "btn activec" }, [
                   _vm._v(
-                    "Active cases " + _vm._s(_vm.globallyNum.active_cases) + " "
+                    "\n                    Active cases " +
+                      _vm._s(_vm.globallyNum.active_cases) +
+                      "\n                "
                   )
                 ]),
                 _vm._v(" "),
                 _c("button", { staticClass: "btn recovered" }, [
-                  _vm._v("Recovered " + _vm._s(_vm.globallyNum.recovered))
+                  _vm._v(
+                    "\n                    Recovered " +
+                      _vm._s(_vm.globallyNum.recovered) +
+                      "\n                "
+                  )
                 ]),
                 _vm._v(" "),
                 _c("button", { staticClass: "btn deaths" }, [
-                  _vm._v("Deaths  " + _vm._s(_vm.globallyNum.deaths))
+                  _vm._v(
+                    "\n                    Deaths " +
+                      _vm._s(_vm.globallyNum.deaths) +
+                      "\n                "
+                  )
                 ])
               ]),
               _vm._v(" "),
               _c("vue-fuse", {
                 attrs: {
-                  keys: _vm.globallyLatest,
-                  list: _vm.globallyLatest,
-                  placeholder: _vm.Search,
+                  eventName: _vm.fuseResultsUpdated,
+                  keys: [
+                    _vm.globallyLatest.country,
+                    _vm.globallyLatest.confirmed,
+                    _vm.globallyLatest.active_cases,
+                    _vm.globallyLatest.recovered,
+                    _vm.globallyLatest.deaths
+                  ],
                   defaultAll: false
+                },
+                on: {
+                  fuseResultsUpdated: function($event) {
+                    return _vm.results($event)
+                  }
                 }
+              }),
+              _vm._v(" "),
+              _vm._l(_vm.result, function(country) {
+                return _c("ul", { key: country.$index }, [
+                  _c("li", [_vm._v("Country: " + _vm._s(country.country))]),
+                  _vm._v(" "),
+                  _c("li", [_vm._v("Confirmed: " + _vm._s(country.confirmed))]),
+                  _vm._v(" "),
+                  _c("li", [_vm._v("Active: " + _vm._s(country.active_cases))]),
+                  _vm._v(" "),
+                  _c("li", [_vm._v("Recovered: " + _vm._s(country.recovered))]),
+                  _vm._v(" "),
+                  _c("li", [_vm._v("Deaths: " + _vm._s(country.deaths))])
+                ])
               }),
               _vm._v(" "),
               _c(
@@ -53271,11 +53337,17 @@ var render = function() {
                         }
                       }
                     },
-                    [_vm._v("Graphical representation")]
+                    [
+                      _vm._v(
+                        "\n                    Graphical representation\n                "
+                      )
+                    ]
                   ),
                   _vm._v(" "),
                   _c("modal", { attrs: { name: "graphicalView" } }, [
-                    _vm._v("\n          heljo there *.*\n          "),
+                    _vm._v(
+                      "\n                    heljo there *.*\n                    "
+                    ),
                     _c(
                       "button",
                       {
@@ -53287,14 +53359,18 @@ var render = function() {
                           }
                         }
                       },
-                      [_vm._v("X")]
+                      [
+                        _vm._v(
+                          "\n                        X\n                    "
+                        )
+                      ]
                     )
                   ])
                 ],
                 1
               )
             ],
-            1
+            2
           ),
           _vm._v(" "),
           _c("l-tile-layer", {
