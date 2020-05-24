@@ -2000,6 +2000,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 
 
@@ -2026,19 +2028,12 @@ __webpack_require__.r(__webpack_exports__);
       globallyLatest: []
     };
   },
-  created: function created() {
+  mounted: function mounted() {
     var _this = this;
 
-    this.$on("fuseResultsUpdated", function (fuseResultsUpdated) {
-      _this.results1 = fuseResultsUpdated;
-    });
-  },
-  mounted: function mounted() {
-    var _this2 = this;
-
     axios__WEBPACK_IMPORTED_MODULE_0___default.a.all([axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/globally_latest"), axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/globally_latest_number")]).then(axios__WEBPACK_IMPORTED_MODULE_0___default.a.spread(function (latestRes, numRes) {
-      _this2.globallyLatest = latestRes.data;
-      _this2.globallyNum = numRes.data;
+      _this.globallyLatest = latestRes.data;
+      _this.globallyNum = numRes.data;
     }));
   },
   methods: {
@@ -7401,7 +7396,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.sidebar[data-v-52111eee] {\n  position: fixed;\n  width: 300px;\n  top: 70px;\n  right: 0;\n  background: whitesmoke;\n  bottom: 0;\n  margin-right: 0px;\n}\n.search[data-v-52111eee] {\n  position: fixed;\n  width: 250px;\n  height: 50px;\n  font-size: 20px;\n  border-radius: 10px;\n  border: solid deepskyblue;\n  border-width: 4px;\n  right: 40px;\n  top: 300px;\n  display: inline-block;\n  background: transparent;\n}\n.btn[data-v-52111eee] {\n  height: 90px;\n  width: 135px;\n  border-radius: 12px;\n  margin: 10px 5px 5px 5px;\n  font-size: 20px;\n}\n.total[data-v-52111eee] {\n  border: solid deepskyblue;\n  background: deepskyblue;\n  color: #004d66;\n}\n.activec[data-v-52111eee] {\n  border: solid red;\n  background: red;\n  color: #800000;\n}\n.recovered[data-v-52111eee] {\n  border: solid green;\n  background: green;\n  color: #043102;\n}\n.deaths[data-v-52111eee] {\n  border: solid grey;\n  background: grey;\n  color: #404040;\n}\n.graph[data-v-52111eee] {\n  position: fixed;\n  right: 40px;\n  top: 360px;\n  height: 60px;\n  width: 250px;\n  border-radius: 8px;\n  font-size: 20px;\n  color: grey;\n  background: transparent;\n  border-color: deepskyblue;\n  border-width: 4px;\n}\n.close-btn[data-v-52111eee] {\n  background: #ff4d4d;\n  position: fixed;\n  right: 130px;\n  width: 60px;\n  height: 30px;\n  border-radius: 12px;\n}\n", ""]);
+exports.push([module.i, "\n.sidebar[data-v-52111eee] {\r\n    position: fixed;\r\n    width: 300px;\r\n    top: 70px;\r\n    right: 0;\r\n    background: whitesmoke;\r\n    bottom: 0;\r\n    margin-right: 0px;\n}\n.btn[data-v-52111eee] {\r\n    height: 100px;\r\n    width: 135px;\r\n    border-radius: 12px;\r\n    margin: 10px 5px 5px 5px;\r\n    font-size: 20px;\n}\n.total[data-v-52111eee] {\r\n    border: solid deepskyblue;\r\n    background: deepskyblue;\r\n    color: #004d66;\n}\n.activec[data-v-52111eee] {\r\n    border: solid red;\r\n    background: red;\r\n    color: #800000;\n}\n.recovered[data-v-52111eee] {\r\n    border: solid green;\r\n    background: green;\r\n    color: #043102;\n}\n.deaths[data-v-52111eee] {\r\n    border: solid grey;\r\n    background: grey;\r\n    color: #404040;\n}\n#graph-btn[data-v-52111eee] {\r\n    position: fixed;\r\n    right: 40px;\r\n    top: 90px;\r\n    height: 35px;\r\n    width: 75px;\r\n    border-radius: 8px;\r\n    font-size: 10px;\r\n    color: black;\r\n    background: red;\n}\r\n", ""]);
 
 // exports
 
@@ -53208,25 +53203,27 @@ var render = function() {
                   },
                   [
                     _vm._v(
-                      "\n        Country: " +
+                      "\n                Country: " +
                         _vm._s(country.country) +
-                        "\n        "
+                        "\n                "
                     ),
                     _c("br"),
                     _vm._v(
-                      "\n        Confirmed: " +
+                      "\n                Confirmed: " +
                         _vm._s(country.confirmed) +
-                        "\n        "
+                        "\n                "
                     ),
                     _c("br"),
                     _vm._v(
-                      "\n        Recovered: " +
+                      "\n                Recovered: " +
                         _vm._s(country.recovered) +
-                        "\n        "
+                        "\n                "
                     ),
                     _c("br"),
                     _vm._v(
-                      "\n        Deaths: " + _vm._s(country.deaths) + "\n      "
+                      "\n                Deaths: " +
+                        _vm._s(country.deaths) +
+                        "\n               \n            "
                     )
                   ]
                 )
@@ -53241,19 +53238,35 @@ var render = function() {
             [
               _c("div", [
                 _c("button", { staticClass: "btn total" }, [
-                  _vm._v("Total cases " + _vm._s(_vm.globallyNum.confirmed))
+                  _vm._v(
+                    "\n                    Total cases " +
+                      _vm._s(_vm.globallyNum.confirmed) +
+                      "\n                "
+                  )
                 ]),
                 _vm._v(" "),
                 _c("button", { staticClass: "btn activec" }, [
-                  _vm._v("Active cases " + _vm._s(_vm.globallyNum.active_cases))
+                  _vm._v(
+                    "\n                    Active cases " +
+                      _vm._s(_vm.globallyNum.active_cases) +
+                      "\n                "
+                  )
                 ]),
                 _vm._v(" "),
                 _c("button", { staticClass: "btn recovered" }, [
-                  _vm._v("Recovered " + _vm._s(_vm.globallyNum.recovered))
+                  _vm._v(
+                    "\n                    Recovered " +
+                      _vm._s(_vm.globallyNum.recovered) +
+                      "\n                "
+                  )
                 ]),
                 _vm._v(" "),
                 _c("button", { staticClass: "btn deaths" }, [
-                  _vm._v("Deaths " + _vm._s(_vm.globallyNum.deaths))
+                  _vm._v(
+                    "\n                    Deaths " +
+                      _vm._s(_vm.globallyNum.deaths) +
+                      "\n                "
+                  )
                 ])
               ]),
               _vm._v(" "),
@@ -53272,7 +53285,7 @@ var render = function() {
               _vm._v(" "),
               _vm._l(_vm.foundInSearch, function(country) {
                 return _c("ul", { key: country.$index }, [
-                  _c("li", [_vm._v("Country: " + _vm._s(country.country))]),
+                  _c("li", [_vm._v(_vm._s(country.country))]),
                   _vm._v(" "),
                   _c("li", [_vm._v("Confirmed: " + _vm._s(country.confirmed))]),
                   _vm._v(" "),
@@ -53282,44 +53295,7 @@ var render = function() {
                   _vm._v(" "),
                   _c("li", [_vm._v("Deaths: " + _vm._s(country.deaths))])
                 ])
-              }),
-              _vm._v(" "),
-              _c(
-                "div",
-                [
-                  _c(
-                    "button",
-                    {
-                      staticClass: "graph",
-                      on: {
-                        click: function($event) {
-                          $event.preventDefault()
-                          return _vm.show($event)
-                        }
-                      }
-                    },
-                    [_vm._v("Graphical representation")]
-                  ),
-                  _vm._v(" "),
-                  _c("modal", { attrs: { name: "graphicalView" } }, [
-                    _vm._v("\n          heljo there *.*\n          "),
-                    _c(
-                      "button",
-                      {
-                        staticClass: "close-btn",
-                        on: {
-                          click: function($event) {
-                            $event.preventDefault()
-                            return _vm.hide($event)
-                          }
-                        }
-                      },
-                      [_vm._v("X")]
-                    )
-                  ])
-                ],
-                1
-              )
+              })
             ],
             2
           ),
@@ -79443,8 +79419,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/viktor/Desktop/coronavirus_app/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/viktor/Desktop/coronavirus_app/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/jovanas/Desktop/coronavirus_app/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/jovanas/Desktop/coronavirus_app/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
