@@ -1994,14 +1994,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -2009,7 +2001,7 @@ __webpack_require__.r(__webpack_exports__);
   components: {
     LMap: vue2_leaflet__WEBPACK_IMPORTED_MODULE_2__["LMap"],
     LTileLayer: vue2_leaflet__WEBPACK_IMPORTED_MODULE_2__["LTileLayer"],
-    LPopup: vue2_leaflet__WEBPACK_IMPORTED_MODULE_2__["LPopup"],
+    LTooltip: vue2_leaflet__WEBPACK_IMPORTED_MODULE_2__["LTooltip"],
     LControl: vue2_leaflet__WEBPACK_IMPORTED_MODULE_2__["LControl"],
     LCircle: vue2_leaflet__WEBPACK_IMPORTED_MODULE_2__["LCircle"]
   },
@@ -7396,7 +7388,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.sidebar[data-v-52111eee] {\r\n    position: fixed;\r\n    width: 300px;\r\n    top: 70px;\r\n    right: 0;\r\n    background: whitesmoke;\r\n    bottom: 0;\r\n    margin-right: 0px;\n}\n.btn[data-v-52111eee] {\r\n    height: 100px;\r\n    width: 135px;\r\n    border-radius: 12px;\r\n    margin: 10px 5px 5px 5px;\r\n    font-size: 20px;\n}\n.total[data-v-52111eee] {\r\n    border: solid deepskyblue;\r\n    background: deepskyblue;\r\n    color: #004d66;\n}\n.activec[data-v-52111eee] {\r\n    border: solid red;\r\n    background: red;\r\n    color: #800000;\n}\n.recovered[data-v-52111eee] {\r\n    border: solid green;\r\n    background: green;\r\n    color: #043102;\n}\n.deaths[data-v-52111eee] {\r\n    border: solid grey;\r\n    background: grey;\r\n    color: #404040;\n}\n#graph-btn[data-v-52111eee] {\r\n    position: fixed;\r\n    right: 40px;\r\n    top: 90px;\r\n    height: 35px;\r\n    width: 75px;\r\n    border-radius: 8px;\r\n    font-size: 10px;\r\n    color: black;\r\n    background: red;\n}\r\n", ""]);
+exports.push([module.i, "\n.sidebar[data-v-52111eee] {\n  position: fixed;\n  width: 300px;\n  top: 70px;\n  right: 0;\n  background: whitesmoke;\n  bottom: 0;\n  margin-right: 0px;\n}\n.btn[data-v-52111eee] {\n  height: 100px;\n  width: 135px;\n  border-radius: 12px;\n  margin: 10px 5px 5px 5px;\n  font-size: 20px;\n}\n.total[data-v-52111eee] {\n  border: solid deepskyblue;\n  background: deepskyblue;\n  color: #004d66;\n}\n.activec[data-v-52111eee] {\n  border: solid red;\n  background: red;\n  color: #800000;\n}\n.recovered[data-v-52111eee] {\n  border: solid green;\n  background: green;\n  color: #043102;\n}\n.deaths[data-v-52111eee] {\n  border: solid grey;\n  background: grey;\n  color: #404040;\n}\n#graph-btn[data-v-52111eee] {\n  position: fixed;\n  right: 40px;\n  top: 90px;\n  height: 35px;\n  width: 75px;\n  border-radius: 8px;\n  font-size: 10px;\n  color: black;\n  background: red;\n}\n", ""]);
 
 // exports
 
@@ -53189,44 +53181,37 @@ var render = function() {
                 attrs: {
                   "lat-lng": [country.latitude, country.longitude],
                   radius: 200000
+                },
+                on: {
+                  mouseover: function($event) {
+                    return _vm.fartfunc("FAAAAAAAAAAAAAAAART")
+                  }
                 }
               },
               [
-                _c(
-                  "l-popup",
-                  {
-                    on: {
-                      mouseover: function($event) {
-                        _vm.active = !_vm.active
-                      }
-                    }
-                  },
-                  [
-                    _vm._v(
-                      "\n                Country: " +
-                        _vm._s(country.country) +
-                        "\n                "
-                    ),
-                    _c("br"),
-                    _vm._v(
-                      "\n                Confirmed: " +
-                        _vm._s(country.confirmed) +
-                        "\n                "
-                    ),
-                    _c("br"),
-                    _vm._v(
-                      "\n                Recovered: " +
-                        _vm._s(country.recovered) +
-                        "\n                "
-                    ),
-                    _c("br"),
-                    _vm._v(
-                      "\n                Deaths: " +
-                        _vm._s(country.deaths) +
-                        "\n               \n            "
-                    )
-                  ]
-                )
+                _c("l-tooltip", [
+                  _vm._v(
+                    "\n        Country: " +
+                      _vm._s(country.country) +
+                      "\n        "
+                  ),
+                  _c("br"),
+                  _vm._v(
+                    "\n        Confirmed: " +
+                      _vm._s(country.confirmed) +
+                      "\n        "
+                  ),
+                  _c("br"),
+                  _vm._v(
+                    "\n        Recovered: " +
+                      _vm._s(country.recovered) +
+                      "\n        "
+                  ),
+                  _c("br"),
+                  _vm._v(
+                    "\n        Deaths: " + _vm._s(country.deaths) + "\n      "
+                  )
+                ])
               ],
               1
             )
@@ -53238,35 +53223,19 @@ var render = function() {
             [
               _c("div", [
                 _c("button", { staticClass: "btn total" }, [
-                  _vm._v(
-                    "\n                    Total cases " +
-                      _vm._s(_vm.globallyNum.confirmed) +
-                      "\n                "
-                  )
+                  _vm._v("Total cases " + _vm._s(_vm.globallyNum.confirmed))
                 ]),
                 _vm._v(" "),
                 _c("button", { staticClass: "btn activec" }, [
-                  _vm._v(
-                    "\n                    Active cases " +
-                      _vm._s(_vm.globallyNum.active_cases) +
-                      "\n                "
-                  )
+                  _vm._v("Active cases " + _vm._s(_vm.globallyNum.active_cases))
                 ]),
                 _vm._v(" "),
                 _c("button", { staticClass: "btn recovered" }, [
-                  _vm._v(
-                    "\n                    Recovered " +
-                      _vm._s(_vm.globallyNum.recovered) +
-                      "\n                "
-                  )
+                  _vm._v("Recovered " + _vm._s(_vm.globallyNum.recovered))
                 ]),
                 _vm._v(" "),
                 _c("button", { staticClass: "btn deaths" }, [
-                  _vm._v(
-                    "\n                    Deaths " +
-                      _vm._s(_vm.globallyNum.deaths) +
-                      "\n                "
-                  )
+                  _vm._v("Deaths " + _vm._s(_vm.globallyNum.deaths))
                 ])
               ]),
               _vm._v(" "),
@@ -79419,8 +79388,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/jovanas/Desktop/coronavirus_app/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/jovanas/Desktop/coronavirus_app/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/viktor/Desktop/coronavirus_app/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/viktor/Desktop/coronavirus_app/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
