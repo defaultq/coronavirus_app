@@ -1994,6 +1994,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 
 
@@ -7388,7 +7390,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.sidebar[data-v-52111eee] {\n  position: fixed;\n  width: 300px;\n  top: 70px;\n  right: 0;\n  background: whitesmoke;\n  bottom: 0;\n  margin-right: 0px;\n}\n.btn[data-v-52111eee] {\n  height: 100px;\n  width: 135px;\n  border-radius: 12px;\n  margin: 10px 5px 5px 5px;\n  font-size: 20px;\n}\n.total[data-v-52111eee] {\n  border: solid deepskyblue;\n  background: deepskyblue;\n  color: #004d66;\n}\n.activec[data-v-52111eee] {\n  border: solid red;\n  background: red;\n  color: #800000;\n}\n.recovered[data-v-52111eee] {\n  border: solid green;\n  background: green;\n  color: #043102;\n}\n.deaths[data-v-52111eee] {\n  border: solid grey;\n  background: grey;\n  color: #404040;\n}\n#graph-btn[data-v-52111eee] {\n  position: fixed;\n  right: 40px;\n  top: 90px;\n  height: 35px;\n  width: 75px;\n  border-radius: 8px;\n  font-size: 10px;\n  color: black;\n  background: red;\n}\n", ""]);
+exports.push([module.i, "\n.sidebar[data-v-52111eee] {\r\n  position: fixed;\r\n  width: 300px;\r\n  top: 70px;\r\n  right: 0;\r\n  background: whitesmoke;\r\n  bottom: 0;\r\n  margin-right:0;\r\n  margin-top:0;\r\n  padding-left: 5px;\n}\n.btn[data-v-52111eee] {\r\n  height: 100px;\r\n  width: 135px;\r\n  border-radius: 12px;\r\n  margin: 10px 5px 5px 5px;\r\n  font-size: 20px;\n}\n.total[data-v-52111eee] {\r\n  border: solid deepskyblue;\r\n  background: deepskyblue;\r\n  color: #004d66;\n}\n.activec[data-v-52111eee] {\r\n  border: solid red;\r\n  background: red;\r\n  color: #800000;\n}\n.recovered[data-v-52111eee] {\r\n  border: solid green;\r\n  background: green;\r\n  color: #043102;\n}\n.deaths[data-v-52111eee] {\r\n  border: solid grey;\r\n  background: grey;\r\n  color: #404040;\n}\n.search[data-v-52111eee]{\r\n    border-radius: 10px;\r\n    border: solid deepskyblue;\r\n    height: 50px;\r\n    width: 300px;\n}\nul[data-v-52111eee]{\r\n    background-color: #e6e6e6;\r\n    font-size: 15px;\r\n    margin:10px;\r\n    padding:10px;\n}\r\n\r\n", ""]);
 
 // exports
 
@@ -53239,7 +53241,10 @@ var render = function() {
                 ])
               ]),
               _vm._v(" "),
+              _c("br"),
+              _vm._v(" "),
               _c("vue-fuse", {
+                staticClass: "search",
                 attrs: {
                   keys: _vm.keys,
                   list: _vm.globallyLatest,
@@ -53253,17 +53258,30 @@ var render = function() {
               }),
               _vm._v(" "),
               _vm._l(_vm.foundInSearch, function(country) {
-                return _c("ul", { key: country.$index }, [
-                  _c("li", [_vm._v(_vm._s(country.country))]),
-                  _vm._v(" "),
-                  _c("li", [_vm._v("Confirmed: " + _vm._s(country.confirmed))]),
-                  _vm._v(" "),
-                  _c("li", [_vm._v("Active: " + _vm._s(country.active_cases))]),
-                  _vm._v(" "),
-                  _c("li", [_vm._v("Recovered: " + _vm._s(country.recovered))]),
-                  _vm._v(" "),
-                  _c("li", [_vm._v("Deaths: " + _vm._s(country.deaths))])
-                ])
+                return _c(
+                  "ul",
+                  {
+                    key: country.$index,
+                    staticStyle: { "list-style": "none" }
+                  },
+                  [
+                    _c("li", [_vm._v(_vm._s(country.country))]),
+                    _vm._v(" "),
+                    _c("li", [
+                      _vm._v("Confirmed: " + _vm._s(country.confirmed))
+                    ]),
+                    _vm._v(" "),
+                    _c("li", [
+                      _vm._v("Active: " + _vm._s(country.active_cases))
+                    ]),
+                    _vm._v(" "),
+                    _c("li", [
+                      _vm._v("Recovered: " + _vm._s(country.recovered))
+                    ]),
+                    _vm._v(" "),
+                    _c("li", [_vm._v("Deaths: " + _vm._s(country.deaths))])
+                  ]
+                )
               })
             ],
             2
@@ -79388,8 +79406,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/viktor/Desktop/coronavirus_app/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/viktor/Desktop/coronavirus_app/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/jovanas/Desktop/coronavirus_app/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/jovanas/Desktop/coronavirus_app/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

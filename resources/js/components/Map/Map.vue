@@ -33,13 +33,15 @@
           <button class="btn recovered">Recovered {{ globallyNum.recovered }}</button>
           <button class="btn deaths">Deaths {{ globallyNum.deaths }}</button>
         </div>
-        <vue-fuse
+        <br>
+
+        <vue-fuse class="search"
           :keys="keys"
           :list="globallyLatest"
           :defaultAll="false"
           @fuseResultsUpdated="results($event)"
         ></vue-fuse>
-        <ul v-for="country in foundInSearch" :key="country.$index">
+        <ul  style="list-style: none;" v-for="country in foundInSearch" :key="country.$index">
           <li>{{ country.country }}</li>
           <li>Confirmed: {{ country.confirmed }}</li>
           <li>Active: {{ country.active_cases }}</li>
@@ -132,7 +134,10 @@ export default {
   right: 0;
   background: whitesmoke;
   bottom: 0;
-  margin-right: 0px;
+  margin-right:0;
+  margin-top:0;
+  padding-left: 5px;
+
 }
 
 .btn {
@@ -166,15 +171,20 @@ export default {
   color: #404040;
 }
 
-#graph-btn {
-  position: fixed;
-  right: 40px;
-  top: 90px;
-  height: 35px;
-  width: 75px;
-  border-radius: 8px;
-  font-size: 10px;
-  color: black;
-  background: red;
+.search{
+    border-radius: 10px;
+    border: solid deepskyblue;
+    height: 50px;
+    width: 300px;
+    
 }
+
+ul{
+    background-color: #e6e6e6;
+    font-size: 15px;
+    margin:10px;
+    padding:10px;
+
+}
+
 </style>
