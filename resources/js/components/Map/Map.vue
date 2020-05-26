@@ -14,7 +14,6 @@
         :key="country.$index"
         :lat-lng="[country.latitude, country.longitude]"
         :radius="200000"
-        @mouseover="fartfunc('FAAAAAAAAAAAAAAAART')"
       >
         <l-tooltip>
           Country: {{ country.country }}
@@ -38,6 +37,7 @@
           :list="globallyLatest"
           :defaultAll="false"
           @fuseResultsUpdated="results($event)"
+          :findAllMatches="true"
         ></vue-fuse>
         <ul v-for="country in foundInSearch" :key="country.$index">
           <li>{{ country.country }}</li>
