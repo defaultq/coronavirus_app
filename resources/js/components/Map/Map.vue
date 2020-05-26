@@ -9,12 +9,36 @@
       @update:center="centerUpdated"
       @update:bounds="boundsUpdated"
     >
+      <l-control position="topright">
+        <div class="sidebar">
+          <button class="btn total">Total cases {{ globallyNum.confirmed }}</button>
+          <button class="btn activec">Active cases {{ globallyNum.active_cases }}</button>
+          <button class="btn recovered">Recovered {{ globallyNum.recovered }}</button>
+          <button class="btn deaths">Deaths {{ globallyNum.deaths }}</button>
+
+          <br />
+
+          <vue-fuse
+            class="search"
+            :keys="keys"
+            :list="globallyLatest"
+            :defaultAll="false"
+            @fuseResultsUpdated="results($event)"
+          ></vue-fuse>
+          <ul style="list-style: none;" v-for="country in foundInSearch" :key="country.$index">
+            <li>{{ country.country }}</li>
+            <li>Confirmed: {{ country.confirmed }}</li>
+            <li>Active: {{ country.active_cases }}</li>
+            <li>Recovered: {{ country.recovered }}</li>
+            <li>Deaths: {{ country.deaths }}</li>
+          </ul>
+        </div>
+      </l-control>
       <l-circle
         v-for="country in globallyLatest"
         :key="country.$index"
         :lat-lng="[country.latitude, country.longitude]"
         :radius="200000"
-        @mouseover="fartfunc('FAAAAAAAAAAAAAAAART')"
       >
         <l-tooltip>
           Country: {{ country.country }}
@@ -26,29 +50,6 @@
           Deaths: {{ country.deaths }}
         </l-tooltip>
       </l-circle>
-      <l-control class="sidebar">
-        <div>
-          <button class="btn total">Total cases {{ globallyNum.confirmed }}</button>
-          <button class="btn activec">Active cases {{ globallyNum.active_cases }}</button>
-          <button class="btn recovered">Recovered {{ globallyNum.recovered }}</button>
-          <button class="btn deaths">Deaths {{ globallyNum.deaths }}</button>
-        </div>
-        <br>
-
-        <vue-fuse class="search"
-          :keys="keys"
-          :list="globallyLatest"
-          :defaultAll="false"
-          @fuseResultsUpdated="results($event)"
-        ></vue-fuse>
-        <ul  style="list-style: none;" v-for="country in foundInSearch" :key="country.$index">
-          <li>{{ country.country }}</li>
-          <li>Confirmed: {{ country.confirmed }}</li>
-          <li>Active: {{ country.active_cases }}</li>
-          <li>Recovered: {{ country.recovered }}</li>
-          <li>Deaths: {{ country.deaths }}</li>
-        </ul>
-      </l-control>
       <l-tile-layer :url="url" :attribution="attribution" />
     </l-map>
   </div>
@@ -130,14 +131,13 @@ export default {
 .sidebar {
   position: fixed;
   width: 300px;
-  top: 70px;
+  top: 0px;
   right: 0;
   background: whitesmoke;
   bottom: 0;
-  margin-right:0;
-  margin-top:0;
+  margin-right: 0;
+  margin-top: 0;
   padding-left: 5px;
-
 }
 
 .btn {
@@ -171,20 +171,17 @@ export default {
   color: #404040;
 }
 
-.search{
-    border-radius: 10px;
-    border: solid deepskyblue;
-    height: 50px;
-    width: 300px;
-    
+.search {
+  border-radius: 10px;
+  border: solid deepskyblue;
+  height: 50px;
+  width: 300px;
 }
 
-ul{
-    background-color: #e6e6e6;
-    font-size: 15px;
-    margin:10px;
-    padding:10px;
-
+ul {
+  background-color: #e6e6e6;
+  font-size: 15px;
+  margin: 10px;
+  padding: 10px;
 }
-
 </style>
