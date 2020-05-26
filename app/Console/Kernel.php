@@ -25,7 +25,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-       $schedule->call(new FetchCovidController)->everyMinute();
+    //    $schedule->call(new FetchCovidController)->everyMinute();
     }
 
     /**

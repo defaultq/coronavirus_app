@@ -53181,6 +53181,11 @@ var render = function() {
                 attrs: {
                   "lat-lng": [country.latitude, country.longitude],
                   radius: 200000
+                },
+                on: {
+                  mouseover: function($event) {
+                    return _vm.fartfunc("FAAAAAAAAAAAAAAAART")
+                  }
                 }
               },
               [
@@ -53238,8 +53243,7 @@ var render = function() {
                 attrs: {
                   keys: _vm.keys,
                   list: _vm.globallyLatest,
-                  defaultAll: false,
-                  findAllMatches: true
+                  defaultAll: false
                 },
                 on: {
                   fuseResultsUpdated: function($event) {
