@@ -52218,17 +52218,13 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticStyle: { height: "400px" } },
+    { staticStyle: { height: "1080px" } },
     [
       _c(
         "l-map",
         {
-          staticStyle: { height: "450%", width: "100%" },
-          attrs: {
-            zoom: _vm.zoom,
-            center: _vm.center,
-            "max-bounds": _vm.maxBounds
-          },
+          staticStyle: { height: "100%", width: "100%" },
+          attrs: { zoom: _vm.zoom, center: _vm.center, worldCopyJump: true },
           on: {
             "update:zoom": _vm.zoomUpdated,
             "update:center": _vm.centerUpdated,

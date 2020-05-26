@@ -1,10 +1,10 @@
 <template>
-  <div style="height: 400px;">
+  <div style="height: 1080px;">
     <l-map
-      style="height: 450%; width: 100%"
+      style="height: 100%; width: 100%"
       :zoom="zoom"
       :center="center"
-      :max-bounds="maxBounds"
+      :worldCopyJump="true"
       @update:zoom="zoomUpdated"
       @update:center="centerUpdated"
       @update:bounds="boundsUpdated"

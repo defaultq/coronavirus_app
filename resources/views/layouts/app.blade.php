@@ -21,11 +21,7 @@
 </head>
 <body>
     <div id="app">
-        <div >
-            <main>
                 @yield('content')
-            </main>
-        </div>
     </div>
     <script src={{asset('js/app.js')}}></script>
 </body>
